@@ -1,0 +1,49 @@
+@Metadata.layer: #CORE
+annotate entity ZC_SalesOrderItm11
+    with 
+{
+    @UI.facet: [{ 
+                  purpose: #STANDARD,
+                  position: 10,
+                  type:#IDENTIFICATION_REFERENCE
+     }]
+    
+    @UI.hidden: true
+    Salesitemuuid;
+    @UI.hidden: true
+    Salesorderuuid;
+    @UI.identification: [{  position: 10 }]
+    @UI.lineItem: [{ position: 10 }]
+    Salesorderitem;
+    @UI.identification: [{  position: 20 }]
+    @UI.lineItem: [{ position: 20 }]
+    Salesorderitemcategory;
+    @UI.identification: [{  position: 30 }]
+    @UI.lineItem: [{ position: 30 }]
+    Salesorderitemtext;
+    @UI.identification: [{  position: 40 }]
+    @UI.lineItem: [{ position: 40 }]
+    Material;
+    @UI.identification: [{  position: 50 }]
+    @UI.lineItem: [{ position: 50 }]
+    Plant;
+    @UI.lineItem: [{ position: 60 }]
+    Orderquantityunit;
+    @UI.lineItem: [{ position: 70 }]
+    Orderquantity;
+    @UI.lineItem: [{ position: 80 }]
+    Netamount;
+    @UI.hidden: true
+    Transactioncurrency;
+    @UI.hidden: true
+    Createdbyuser;
+    @UI.hidden: true
+    Creationat;
+    @UI.hidden: true
+    Lastchangedbyuser;
+    @UI.hidden: true
+    Lastchangedat;
+    @UI.hidden: true
+    Locallastchangedat;
+    
+}

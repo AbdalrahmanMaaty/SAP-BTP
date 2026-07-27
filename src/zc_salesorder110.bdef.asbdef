@@ -1,0 +1,24 @@
+projection;
+//strict ( 2 );
+use draft;
+
+define behavior for ZC_SalesOrder110 alias SalesHDR
+use etag
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _SalesItem { create; with draft;}
+
+  use action setComplete;
+}
+
+define behavior for ZC_SalesOrderItm11 alias SalesITM
+use etag
+{
+  use update;
+  use delete;
+
+  use association _SalesHDR {with draft;}
+}

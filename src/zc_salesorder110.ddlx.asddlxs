@@ -1,0 +1,67 @@
+@Metadata.layer: #CORE
+annotate entity ZC_SalesOrder110
+    with 
+{
+
+      @UI.facet: [{
+           purpose: #HEADER,
+           position: 10,
+           type: #IDENTIFICATION_REFERENCE
+         }
+      
+      ,{
+           purpose: #STANDARD,
+           position: 10,
+           type: #IDENTIFICATION_REFERENCE
+         },
+         
+         {
+           purpose: #STANDARD,
+           position: 20,
+           label: 'Sales Order Items',
+           type: #LINEITEM_REFERENCE,
+           targetElement: '_SalesItem'
+         
+         }]
+   
+      @UI.hidden: true
+      Salesorderuuid;
+      @UI.lineItem: [{ position: 10 }]
+      @UI.identification: [{  position: 10 }]
+      Salesorder;
+      @UI.lineItem: [{ position: 20 }]
+      @UI.identification: [{ position: 20 }]
+      Salesordertype;
+      @UI.lineItem: [{ position: 30 }]
+      @UI.identification: [{  position: 30 }]
+      Description;
+      @UI.lineItem: [{ position: 40 }]
+      @UI.identification: [{  position: 40 }]
+      Salesorganization;
+      @UI.lineItem: [{ position: 50 }]
+      @UI.identification: [{  position: 50 }]
+      Soldtoparty;
+      @UI.lineItem: [{ position: 60 }]
+      @UI.identification: [{  position: 60 }]
+      Distributionchannel;
+      @UI.hidden: true
+      Documentreason;
+      @UI.lineItem: [{ position: 70 }]
+      @UI.identification: [{  position: 70 }]
+      TotalAmount;
+      @UI.hidden: true
+      Transactioncurrency;
+      @UI.lineItem: [{ position: 80 }, { type: #FOR_ACTION, dataAction: 'setComplete', label: 'Set Complete' }]
+      @UI.identification: [{  position: 80 }, { type: #FOR_ACTION, dataAction: 'setComplete', label: 'Set Complete' }]
+      Status;
+      @UI.hidden: true
+      Creationbyuser;
+      @UI.hidden: true
+      Creationat;
+      @UI.hidden: true
+      Lastchangedbyuser;
+      @UI.hidden: true
+      Lastchanged;
+
+    
+}

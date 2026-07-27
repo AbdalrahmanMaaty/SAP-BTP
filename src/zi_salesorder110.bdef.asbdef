@@ -1,0 +1,79 @@
+    managed implementation in class zbp_i_salesorder110 unique;
+    //strict ( 2 );
+    with draft;
+
+    define behavior for ZI_SalesOrder110 alias SalesHDR
+    persistent table zsaleshdr110
+    draft table zsaleshdr110_d
+    lock master total etag Lastchanged
+   // authorization master ( instance )
+    etag master Lastchanged
+    {
+      create ( authorization : global );
+      update;
+      delete;
+      field ( numbering : managed, readonly ) Salesorderuuid;
+      association _SalesItem { create; with draft; }
+      field ( readonly ) Salesorder, Status;
+
+      determination calcSalesOrderID on save { create; }
+
+      action ( features : instance ) setComplete result [1] $self;
+
+      mapping for zsaleshdr110
+      {
+          salesorderuuid      = Salesorderuuid;
+          salesorder          = Salesorder;
+          salesordertype      = Salesordertype;
+          description         = Description;
+          salesorganization   = Salesorganization;
+          soldtoparty         = Soldtoparty;
+          distributionchannel = Distributionchannel;
+          documentreason      = Documentreason;
+          totalamount         = TotalnetAmount;
+          transactioncurrency = Transactioncurrency;
+          status              = status;
+          creationbyuser      = Creationbyuser;
+          creationat          = Creationat;
+          lastchangedbyuser   = Lastchangedbyuser;
+          lastchanged         = Lastchanged;
+
+      }
+    }
+
+    define behavior for ZI_SalesOrderItm11 alias SalesITM
+    persistent table zsalesitm110
+    draft table zsalesitm110_d
+    lock dependent by _SalesHDR
+   // authorization dependent by _SalesHDR
+    etag master Lastchangedat
+    {
+      update;
+      delete;
+      field ( readonly ) Salesorderuuid;
+      field ( numbering : managed, readonly ) Salesitemuuid;
+      association _SalesHDR {with draft;}
+
+      validation validatePlant on save { field Plant; create; }
+
+      mapping for zsalesitm110
+      {
+          salesitemuuid          = Salesitemuuid;
+          salesorderuuid         = Salesorderuuid;
+          salesorderitem         = Salesorderitem;
+          salesorderitemcategory = Salesorderitemcategory;
+          salesorderitemtext     = Salesorderitemtext;
+          material               = Material;
+          plant                  = Plant;
+          orderquantityunit      = Orderquantityunit;
+          orderquantity          = Orderquantity;
+          netamount              = Netamount;
+          transactioncurrency    = Transactioncurrency;
+          createdbyuser          = Createdbyuser;
+          creationat             = Creationat;
+          lastchangedbyuser      = Lastchangedbyuser;
+          lastchangedat          = Lastchangedat;
+          locallastchangedat     = Locallastchangedat;
+
+      }
+    }
