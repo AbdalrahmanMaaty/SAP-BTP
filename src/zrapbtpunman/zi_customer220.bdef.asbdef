@@ -1,0 +1,58 @@
+unmanaged implementation in class zbp_i_customer220 unique;
+//strict ( 2 );
+
+define behavior for ZI_Customer220 alias Customer
+//late numbering
+lock master
+//authorization master ( instance )
+etag master Lastchangedat
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly ) Customerno;
+  association _CustAddr { create; }
+
+  mapping for ZCUSTOMER220
+  {
+
+    Customerno = customerno;
+    Firstname = firstname;
+    Lastname    = lastname;
+    Phone       = phone;
+    Createdbyuser = createdbyuser;
+    Creationat  = creationat;
+    Lastchangedbyuser = lastchangedbyuser;
+    Lastchangedat   = lastchangedat;
+    Locallastchangedat  = locallastchangedat;
+
+  }
+}
+
+define behavior for ZI_CustAddr220 alias CustAddr
+//late numbering
+lock dependent by _Customer
+//authorization dependent by _Customer
+etag dependent by _Customer
+{
+  update;
+  delete;
+  field ( readonly ) Customerno, Addressid;
+  association _Customer;
+
+  mapping for zcustaddr220
+  {
+
+    Customerno  = customerno;
+    Addressid   = addressid;
+    City        = city;
+    District    = district;
+    PostalCode  = postalcode;
+    Country     = country;
+    Street      = street;
+    Createdbyuser = createdbyuser;
+    Creationat  = creationat;
+    Lastchangedbyuser = lastchangedbyuser;
+    Locallastchangedat  = locallastchangedat;
+  }
+}

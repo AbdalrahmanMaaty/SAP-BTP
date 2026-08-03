@@ -1,0 +1,5 @@
+@EndUserText.label: 'Serv Def for ZC_CUSTOMER220'
+define service ZC_CUSTOMER220SD {
+  expose ZC_CUSTOMER220;
+  expose ZC_CUSTADDR220;
+}

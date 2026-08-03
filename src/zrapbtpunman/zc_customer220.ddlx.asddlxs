@@ -1,0 +1,41 @@
+@Metadata.layer: #CORE
+@UI: { 
+    headerInfo: { typeName: 'Customer', typeNamePlural: 'Customers', title: { type: #STANDARD, value: 'Customerno' } }
+ }
+annotate entity ZC_CUSTOMER220
+    with 
+{
+
+    @UI.facet: [{ 
+    
+            purpose: #STANDARD,
+            type: #IDENTIFICATION_REFERENCE,
+            label: 'Customer',
+            position: 10
+    
+     },
+     { 
+    
+            purpose: #STANDARD,
+            type: #LINEITEM_REFERENCE,
+            label: 'Customer Addresses',
+            position: 20,
+            targetElement: '_CustAddr'
+    
+     }]
+
+    @UI: { lineItem: [{ position:10 }],
+    identification: [{ position: 10 }]}
+    Customerno;
+    @UI: { lineItem: [{ position:20 }],
+    identification: [{ position: 20 }]}
+    Firstname;
+    @UI: { lineItem: [{ position:30 }],
+    identification: [{ position: 30 }]}
+    Lastname;
+    @UI: { lineItem: [{ position:40 }],
+    identification: [{ position: 40 }]}
+    Phone;
+    
+    
+}
