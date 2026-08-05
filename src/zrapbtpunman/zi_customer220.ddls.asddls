@@ -6,7 +6,7 @@ define root view entity ZI_Customer220
   composition [0..*] of ZI_CustAddr220 as _CustAddr
 {
 
-      @EndUserText.label: 'Customer'
+      @EndUserText.label: 'Customer No'
   key customerno         as Customerno,
       @EndUserText.label: 'First Name'
       firstname          as Firstname,
