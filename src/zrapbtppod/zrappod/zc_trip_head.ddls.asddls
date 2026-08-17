@@ -1,5 +1,6 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Projection view for Trip Head'
+@Metadata.allowExtensions: true
 define root view entity ZC_TRIP_HEAD as projection on ZI_TRIP_HEAD
 {
     key TripUuid,
