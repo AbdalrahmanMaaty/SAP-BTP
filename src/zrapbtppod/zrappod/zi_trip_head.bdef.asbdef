@@ -1,0 +1,66 @@
+managed implementation in class zbp_i_trip_head unique;
+//strict ( 2 );
+with draft;
+define behavior for ZI_TRIP_HEAD alias TripHDR
+persistent table ztrip_head
+draft table ZDTRIP_HEAD
+lock master total etag LocalLastChangedAt
+etag master LocalLastChangedAt
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( numbering : managed, readonly ) TripUuid;
+  association _TripITM { create; with draft; }
+
+  mapping for ztrip_head
+  {
+    TripUuid = trip_uuid;
+    TripId = trip_id;
+    DriverId = driver_id;
+    VehicleId = vehicle_id;
+    TripDate = trip_date;
+    RouteStatus = route_status;
+    TotalCashCollected = total_cash_collected;
+    CurrencyCode = currency_code;
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LastChangedBy = last_changed_by;
+    LastChangedAt = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+}
+
+define behavior for ZI_TRIP_ITEM //alias <alias_name>
+persistent table ztrip_item
+draft table ZDTRIP_ITEM
+lock dependent by _TripHDR
+etag master LocalLastChangedAt
+{
+  update;
+  delete;
+  field ( numbering : managed, readonly ) ItemUuid;
+  field ( readonly ) TripUuid;
+  association _TripHDR {with draft;}
+  mapping for ztrip_item
+  {
+
+    CreatedAt = created_at;
+    CreatedBy = created_by;
+    CustomerName = customer_name;
+    DeliveredQty = delivered_qty;
+    DeliveryId = delivery_id;
+    ExpectedQty = expected_qty;
+    ItemStatus = item_status;
+    ItemUuid = item_uuid;
+    LastChangedAt = last_changed_at;
+    LastChangedBy = last_changed_by;
+    LocalLastChangedAt = local_last_changed_at;
+    MaterialId = material_id;
+    ReturnReason = return_reason;
+    ReturnedQty = returned_qty;
+    TripUuid = trip_uuid;
+    Uom = uom;
+
+  }
+}

@@ -1,5 +1,6 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Projection view for Trip Item'
+@Metadata.allowExtensions: true
 define view entity ZC_TRIP_ITEM as projection on ZI_TRIP_ITEM
 {
     key ItemUuid,
@@ -19,5 +20,5 @@ define view entity ZC_TRIP_ITEM as projection on ZI_TRIP_ITEM
     LastChangedAt,
     LocalLastChangedAt,
     /* Associations */
-    _TripHDR
+    _TripHDR: redirected to parent ZC_TRIP_HEAD
 }

@@ -16,5 +16,5 @@ define root view entity ZC_TRIP_HEAD as projection on ZI_TRIP_HEAD
     LastChangedAt,
     LocalLastChangedAt,
     /* Associations */
-    _TripITM
+    _TripITM: redirected to composition child ZC_TRIP_ITEM 
 }

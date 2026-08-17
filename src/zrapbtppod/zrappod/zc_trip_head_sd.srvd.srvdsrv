@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definition'
+define service ZC_TRIP_HEAD_SD {
+  expose ZC_TRIP_HEAD;
+  expose ZC_TRIP_ITEM;
+}
