@@ -1,0 +1,30 @@
+@Metadata.layer: #CORE
+@Search.searchable: true
+@UI.headerInfo: { 
+                    typeNamePlural: 'Items',
+                    typeName: 'Item',
+                    title.value: 'ItemUuid',
+                    description.value: 'TripUuid'
+                 }
+annotate entity ZC_TRIP_ITEM
+    with 
+{
+    
+    @Search.defaultSearchElement: true
+    @UI.lineItem: [{ position: 20 }]
+    DeliveryId;
+    @Search.defaultSearchElement: true
+    @UI.lineItem: [{ position: 10 }]
+    CustomerName;
+    @UI.lineItem: [{ position: 30 }]
+    ExpectedQty;
+    @UI.lineItem: [{ position: 40 }]
+    DeliveredQty;
+    @UI.lineItem: [{ position: 50 }]
+    ReturnedQty;
+    @Search.defaultSearchElement: true
+    @UI.lineItem: [{ position: 60 }]
+    ItemStatus;
+
+    
+}

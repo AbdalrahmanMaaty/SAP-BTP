@@ -1,7 +1,6 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Interface view for Trip head'
-@Metadata.ignorePropagatedAnnotations: true
-define root view entity ZI_TRIP_HEAD as select from ZTRIP_HEAD as TripHDR
+define root view entity ZI_TRIP_HEAD as select from ztrip_head as TripHDR
 composition [1..*] of ZI_TRIP_ITEM as _TripITM
 {
     key trip_uuid as TripUuid,
@@ -21,7 +20,7 @@ composition [1..*] of ZI_TRIP_ITEM as _TripITM
     last_changed_by as LastChangedBy,
     @Semantics.systemDateTime.lastChangedAt: true
     last_changed_at as LastChangedAt,
-    @Semantics.user.localInstanceLastChangedBy: true
+    @Semantics.systemDateTime.localInstanceLastChangedAt: true
     local_last_changed_at as LocalLastChangedAt,
     _TripITM // Make association public
 }

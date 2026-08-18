@@ -31,7 +31,7 @@ etag master LocalLastChangedAt
   }
 }
 
-define behavior for ZI_TRIP_ITEM //alias <alias_name>
+define behavior for ZI_TRIP_ITEM alias TripITM
 persistent table ztrip_item
 draft table ZDTRIP_ITEM
 lock dependent by _TripHDR

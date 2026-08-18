@@ -42,7 +42,7 @@ CLASS zcl_generate_trip_data IMPLEMENTATION.
       customer_name = 'Hypermarket Downtown'
       material_id   = 'MAT-A100'
       expected_qty  = 50
-      uom           = 'PC'
+      uom           = 'ST'
       item_status   = 'Pending'
     ) TO lt_item.
 
@@ -53,7 +53,7 @@ CLASS zcl_generate_trip_data IMPLEMENTATION.
       customer_name = 'City Grocers'
       material_id   = 'MAT-B200'
       expected_qty  = 120
-      uom           = 'PC'
+      uom           = 'ST'
       item_status   = 'Pending'
     ) TO lt_item.
 

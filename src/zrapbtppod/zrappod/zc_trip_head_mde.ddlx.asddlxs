@@ -1,25 +1,71 @@
 @Metadata.layer: #CORE
 @Search.searchable: true
+@UI.headerInfo: { 
+                    typeNamePlural: 'Trips',
+                    typeName: 'Trip',
+                    title.value: 'TripId'
+                 }
 annotate entity ZC_TRIP_HEAD
     with 
 {
+
+    @UI.facet: [{ 
+                    purpose: #HEADER,
+                    position: 10,
+                    label: 'Cash collected',
+                    type: #DATAPOINT_REFERENCE,
+                    targetQualifier: 'CashKPI'
+     },
+     { 
+                    purpose: #HEADER,
+                    position: 20,
+                    label: 'Trip Status',
+                    type: #DATAPOINT_REFERENCE,
+                    targetQualifier: 'StatusKPI'
+     
+     
+     
+     },{ 
+                    purpose: #STANDARD,
+                    position: 10,
+                    label: 'General Information',
+                    type: #FIELDGROUP_REFERENCE,
+                    targetQualifier: 'GenInfBUCKET'
+   
+     },{ 
+                     purpose: #STANDARD, 
+                     position: 20,  
+                     label: 'Item Table',
+                     type: #LINEITEM_REFERENCE,
+                     targetElement: '_TripITM'
+     }]
     
     @UI.lineItem: [{ position: 10 }]
     @Search.defaultSearchElement: true
+    @UI.selectionField: [{ position: 10 }]
     TripId;
     @UI.lineItem: [{ position: 20 }]
     @Search.defaultSearchElement: true
+    @UI.selectionField: [{ position: 20 }]
+    @UI.fieldGroup: [{ qualifier: 'GenInfBUCKET' , position: 10 }]
     DriverId;
     @UI.lineItem: [{ position: 30 }]
     @Search.defaultSearchElement: true
+    @UI.fieldGroup: [{ qualifier: 'GenInfBUCKET' , position: 20 }]
     VehicleId;
     @UI.lineItem: [{ position: 40 }]
     @Search.defaultSearchElement: true
+    @UI.fieldGroup: [{ qualifier: 'GenInfBUCKET' , position: 30 }]
     TripDate;
     @UI.lineItem: [{ position: 50 }]
+    @UI.selectionField: [{ position: 30 }]
+    @UI.dataPoint: { qualifier: 'StatusKPI', title: 'Trip Status' }
     RouteStatus;
     @UI.lineItem: [{ position: 60 }]
+    @UI.dataPoint: { qualifier: 'CashKPI', title: 'Cash Collected' }
     TotalCashCollected;
+    @UI.selectionField: [{ position: 40 }]
+    CreatedAt;
 
     
 }
